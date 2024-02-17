@@ -1,3 +1,8 @@
 {
-    "extends": "@vinicius1313/tsconfig/tsconfig.json"
+    "extends": "@vinicius1313/tsconfig/tsconfig.json",
+    "compilerOptions": {
+        "paths": {
+            "react-native-selection-mode": ["../src/index"]
+        }
+    }
 }
