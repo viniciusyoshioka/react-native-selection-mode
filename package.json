@@ -33,7 +33,6 @@
         "@vinicius1313/eslint-config": "^1.0.0",
         "@vinicius1313/tsconfig": "^1.0.0",
         "eslint": "^8.56.0",
-        "react": "^18.2.0",
         "react-native-builder-bob": "^0.23.2",
         "typescript": "^5.3.3"
     },
