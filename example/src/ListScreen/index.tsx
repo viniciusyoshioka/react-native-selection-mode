@@ -20,8 +20,11 @@ export function ListScreen() {
 
 
     useBackhandler(() => {
-        listSelection.exitSelection()
-        return true
+        if (listSelection.isSelectionMode) {
+            listSelection.exitSelection()
+            return true
+        }
+        return false
     })
 
 
