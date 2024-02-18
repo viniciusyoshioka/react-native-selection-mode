@@ -21,7 +21,6 @@ export function ListScreen() {
         return (
             <ListItem
                 text={`Index: ${index}`}
-                index={index}
                 isSelectionMode={listSelection.isSelectionMode}
                 isSelected={listSelection.selectedData.includes(index)}
                 onClick={() => Alert.alert("Item clicked", `You clicked item at index: ${index}`)}

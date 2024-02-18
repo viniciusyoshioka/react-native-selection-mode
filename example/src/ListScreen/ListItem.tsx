@@ -6,16 +6,13 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
 export interface ListItemProps extends SelectableItem {
     text: string
-    index: number
 }
 
 
 export function ListItem(props: ListItemProps) {
 
 
-    const backgroundColor = (props.index % 2 === 0)
-        ? "rgb(0, 0, 0)"
-        : "rgb(30, 30, 30)"
+    const backgroundColor = "rgb(0, 0, 0)"
     const rippleColor = "rgba(200, 200, 200, 0.3)"
 
     const { onPress, onLongPress } = useSelectableItem(props)
