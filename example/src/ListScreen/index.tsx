@@ -7,15 +7,10 @@ import { ListItem } from "./ListItem"
 import { useBackhandler } from "./useBackhandler"
 
 
-function getListData(): string[] {
-    return Array(30).fill(0)
-}
-
-
 export function ListScreen() {
 
 
-    const [listData, setListData] = useState(getListData)
+    const [listData, setListData] = useState(() => Array(30).fill(0))
     const listSelection = useSelectionMode<number>()
 
 
