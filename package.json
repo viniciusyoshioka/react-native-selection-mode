@@ -10,7 +10,8 @@
     "react-native": "src/index.ts",
     "files": [
         "src",
-        "lib"
+        "lib",
+        "README.md"
     ],
     "scripts": {
         "typecheck": "tsc --noEmit",
