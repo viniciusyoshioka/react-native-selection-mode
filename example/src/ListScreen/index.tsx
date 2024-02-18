@@ -4,6 +4,7 @@ import { useSelectionMode } from "react-native-selection-mode"
 
 import { Header } from "./Header"
 import { ListItem } from "./ListItem"
+import { useBackhandler } from "./useBackhandler"
 
 
 function getListData(): string[] {
@@ -16,6 +17,12 @@ export function ListScreen() {
 
     const [listData, setListData] = useState(getListData)
     const listSelection = useSelectionMode<number>()
+
+
+    useBackhandler(() => {
+        listSelection.exitSelection()
+        return true
+    })
 
 
     function toggleSelection() {
