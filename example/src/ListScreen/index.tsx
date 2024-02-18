@@ -43,7 +43,7 @@ export function ListScreen() {
                 text={`Index: ${index}`}
                 isSelectionMode={listSelection.isSelectionMode}
                 isSelected={listSelection.selectedData.includes(index)}
-                onClick={() => Alert.alert("Item clicked", `You clicked item at index: ${index}`)}
+                onClick={() => Alert.alert("Item clicked", `You clicked on item at index: ${index}`)}
                 onSelect={() => listSelection.select(index)}
                 onDeselect={() => listSelection.deselect(index)}
             />
