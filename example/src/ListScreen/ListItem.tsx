@@ -28,9 +28,9 @@ export function ListItem(props: ListItemProps) {
         return (
             <Icon
                 name={"checkbox-blank-outline"}
-                size={20}
+                size={24}
                 color={"rgb(221, 221, 221)"}
-                style={{ marginRight: 8 }}
+                style={{ marginRight: 16 }}
             />
         )
     }
@@ -39,9 +39,9 @@ export function ListItem(props: ListItemProps) {
         return (
             <Icon
                 name={"checkbox-marked"}
-                size={20}
+                size={24}
                 color={"rgb(95, 145, 255)"}
-                style={{ marginRight: 8 }}
+                style={{ marginRight: 16 }}
             />
         )
     }
