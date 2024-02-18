@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Alert, FlatList, ListRenderItemInfo, StyleSheet, View } from "react-native"
 import { useSelectionMode } from "react-native-selection-mode"
 
+import { Header } from "./Header"
 import { ListItem } from "./ListItem"
 
 
@@ -16,6 +17,18 @@ export function ListScreen() {
     const [listData, setListData] = useState(getListData)
     const listSelection = useSelectionMode<number>()
 
+
+    function toggleSelection() {
+        listSelection.setSelectedData(current => {
+            const newSelectedData: number[] = []
+            listData.forEach((_, index) => {
+                if (!current.includes(index)) {
+                    newSelectedData.push(index)
+                }
+            })
+            return newSelectedData
+        })
+    }
 
     function renderListItem({ item, index }: ListRenderItemInfo<string>) {
         return (
@@ -33,6 +46,13 @@ export function ListScreen() {
 
     return (
         <View style={styles.background}>
+            <Header
+                isSelectionMode={listSelection.isSelectionMode}
+                selectedCount={listSelection.selectedData.length}
+                exitSelectionMode={listSelection.exitSelection}
+                toggleSelection={toggleSelection}
+            />
+
             <FlatList
                 data={listData}
                 renderItem={renderListItem}
