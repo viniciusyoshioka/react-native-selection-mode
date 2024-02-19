@@ -40,7 +40,28 @@ export interface SelectableItem {
 }
 
 
-export function useSelectableItem<T extends SelectableItem>(props: T) {
+export interface UseSelectableItem {
+
+    /**
+     * This function should be passed to the components `onPress` or `onClick`
+     * prop. It handles whether to call `onClick`, `onSelect` or `onDeselect`
+     * from `SelectableItem`.
+     */
+    onPress: () => void
+
+    /**
+     * This function should be called when the component receives a long press
+     * or when you want to select the item and activate the selection mode.
+     *
+     * The difference between `onLongPress` and `SelectionMode.select` is that
+     * `onLongPress` will only select the item and activate the selection mode
+     * if the selection mode is not active when called.
+     */
+    onLongPress: () => void
+}
+
+
+export function useSelectableItem<T extends SelectableItem>(props: T): UseSelectableItem {
 
 
     function onPress() {
