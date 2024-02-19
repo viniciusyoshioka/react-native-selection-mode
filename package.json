@@ -13,6 +13,21 @@
         "lib",
         "README.md"
     ],
+    "author": "Vinicius Yoshioka <71671043+viniciusyoshioka@users.noreply.github.com> (https://github.com/viniciusyoshioka)",
+    "repository": "https://github.com/viniciusyoshioka/react-native-selection-mode",
+    "bugs": {
+        "url": "https://github.com/viniciusyoshioka/react-native-selection-mode/issues"
+    },
+    "homepage": "https://github.com/viniciusyoshioka/react-native-selection-mode#readme",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
+    "keywords": [
+        "react",
+        "react-native",
+        "selection mode",
+        "list"
+    ],
     "scripts": {
         "typecheck": "tsc --noEmit",
         "lint": "eslint '**/*.{js,ts,tsx}'",
