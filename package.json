@@ -1,6 +1,6 @@
 {
     "name": "react-native-selection-mode",
-    "description": "Library to implement selection mode for React Native",
+    "description": "Library to handle selection mode",
     "version": "0.1.0",
     "license": "MIT",
     "main": "lib/commonjs/index.js",

@@ -1,6 +1,6 @@
 # react-native-selection-mode
 
-Library that helps implementing selection mode.
+Library to handle selection mode.
 
 ## Installation
 
