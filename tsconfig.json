@@ -5,12 +5,12 @@
         "paths": {},
     },
     "include": [
-        "example",
         "src",
         ".eslintrc.js",
         "babel.config.js",
     ],
     "exclude": [
+        "example",
         "lib",
         "node_modules",
     ],
