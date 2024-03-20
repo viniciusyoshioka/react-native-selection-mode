@@ -57,7 +57,7 @@ export function ListItem(props: ListItemProps) {
         <GestureDetector gesture={longPressGesture}>
             <Pressable
                 onPress={onPress}
-                style={[styles.button, { backgroundColor } ]}
+                style={[styles.button, { backgroundColor }]}
                 android_ripple={{ color: rippleColor }}
             >
                 <SelectionIcon />
