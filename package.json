@@ -1,72 +1,72 @@
 {
-    "name": "react-native-selection-mode",
-    "description": "Library to handle selection mode",
-    "version": "1.0.0",
-    "license": "MIT",
-    "main": "lib/commonjs/index.js",
-    "module": "lib/module/index.js",
-    "types": "lib/typescript/src/index.d.ts",
-    "source": "src/index.ts",
-    "react-native": "src/index.ts",
-    "files": [
-        "src",
-        "lib",
-        "README.md"
-    ],
-    "author": "Vinicius Yoshioka <71671043+viniciusyoshioka@users.noreply.github.com> (https://github.com/viniciusyoshioka)",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/viniciusyoshioka/react-native-selection-mode.git"
-    },
-    "bugs": {
-        "url": "https://github.com/viniciusyoshioka/react-native-selection-mode/issues"
-    },
-    "homepage": "https://github.com/viniciusyoshioka/react-native-selection-mode#readme",
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org/"
-    },
-    "keywords": [
-        "react",
-        "react-native",
-        "selection mode",
-        "list"
-    ],
-    "scripts": {
-        "typecheck": "tsc --noEmit",
-        "lint": "eslint '**/*.{js,ts,tsx}'",
-        "bootstrap": "yarn && cd example && yarn",
-        "example": "yarn --cwd example",
-        "start": "yarn --cwd example start",
-        "android": "yarn --cwd example android",
-        "ios": "yarn --cwd example ios",
-        "build": "bob build"
-    },
-    "peerDependencies": {
-        "react": "*"
-    },
-    "devDependencies": {
-        "@stylistic/eslint-plugin": "^1.7.0",
-        "@types/react": "^18.2.55",
-        "@typescript-eslint/eslint-plugin": "^7.3.1",
-        "@typescript-eslint/parser": "^7.3.1",
-        "@vinicius1313/eslint-config": "^1.2.2",
-        "@vinicius1313/tsconfig": "^1.0.0",
-        "eslint": "^8.57.0",
-        "react-native-builder-bob": "^0.23.2",
-        "typescript": "^5.4.2"
-    },
-    "react-native-builder-bob": {
-        "source": "src",
-        "output": "lib",
-        "targets": [
-            "commonjs",
-            "module",
-            [
-                "typescript",
-                {
-                    "project": "tsconfig.json"
-                }
-            ]
-        ]
-    }
+  "name": "react-native-selection-mode",
+  "description": "Library to handle selection mode",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "source": "src/index.ts",
+  "react-native": "src/index.ts",
+  "files": [
+    "src",
+    "lib",
+    "README.md"
+  ],
+  "author": "Vinicius Yoshioka <71671043+viniciusyoshioka@users.noreply.github.com> (https://github.com/viniciusyoshioka)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viniciusyoshioka/react-native-selection-mode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/viniciusyoshioka/react-native-selection-mode/issues"
+  },
+  "homepage": "https://github.com/viniciusyoshioka/react-native-selection-mode#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "selection mode",
+    "list"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint '**/*.{js,ts,tsx}'",
+    "bootstrap": "yarn && cd example && yarn",
+    "example": "yarn --cwd example",
+    "start": "yarn --cwd example start",
+    "android": "yarn --cwd example android",
+    "ios": "yarn --cwd example ios",
+    "build": "bob build"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^1.7.0",
+    "@types/react": "^18.2.55",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "@vinicius1313/eslint-config": "^1.2.2",
+    "@vinicius1313/tsconfig": "^1.0.0",
+    "eslint": "^8.57.0",
+    "react-native-builder-bob": "^0.23.2",
+    "typescript": "^5.4.2"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.json"
+        }
+      ]
+    ]
+  }
 }
