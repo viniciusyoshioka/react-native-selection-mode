@@ -5,11 +5,11 @@ import { ListScreen } from "./ListScreen"
 
 
 export function App() {
-    return (
-        <GestureHandlerRootView style={{ flex: 1 }}>
-            <PaperProvider theme={MD3DarkTheme}>
-                <ListScreen />
-            </PaperProvider>
-        </GestureHandlerRootView>
-    )
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <PaperProvider theme={MD3DarkTheme}>
+        <ListScreen />
+      </PaperProvider>
+    </GestureHandlerRootView>
+  )
 }
