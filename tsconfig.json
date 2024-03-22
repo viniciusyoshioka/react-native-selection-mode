@@ -1,13 +1,10 @@
 {
   "extends": "@vinicius1313/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
     "paths": {},
   },
   "include": [
-    "src",
-    ".eslintrc.js",
-    "babel.config.js",
+    "src/**/*",
   ],
   "exclude": [
     "example",
