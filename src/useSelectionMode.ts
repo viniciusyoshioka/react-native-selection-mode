@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 
 
 export interface SelectionMode<T> {
@@ -93,16 +93,16 @@ export function useSelectionMode<T>(): SelectionMode<T> {
   const [selectedData, setSelectedData] = useState<T[]>([])
 
 
-  function select(item: T) {
+  const select = useCallback((item: T) => {
     if (!isSelectionMode) {
       setIsSelectionMode(true)
     }
     if (!selectedData.includes(item)) {
       setSelectedData(current => [...current, item])
     }
-  }
+  }, [isSelectionMode, selectedData])
 
-  function deselect(item: T) {
+  const deselect = useCallback((item: T) => {
     const index = selectedData.indexOf(item)
     if (index === -1) {
       return
@@ -115,12 +115,12 @@ export function useSelectionMode<T>(): SelectionMode<T> {
     if (isSelectionMode && newSelectedData.length === 0) {
       setIsSelectionMode(false)
     }
-  }
+  }, [selectedData, isSelectionMode])
 
-  function exitSelection() {
+  const exitSelection = useCallback(() => {
     setIsSelectionMode(false)
     setSelectedData([])
-  }
+  }, [])
 
 
   return {
