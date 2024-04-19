@@ -78,7 +78,7 @@ There are a few observations to know before using this library:
             return (
                 <ListItem
                     isSelectionMode={listSelection.isSelectionMode}
-                    isSelected={listSelection.selectedData.includes(index)}
+                    isSelected={listSelection.selectedData.has(index)}
                     onClick={() => console.log("Click")}
                     onSelect={() => listSelection.select(index)}
                     onDeselect={() => listSelection.deselect(index)}
@@ -139,15 +139,15 @@ Contains functions that controls the selection and variables about the selection
 - `selectedData`
 
     ```ts
-    selectedData: T[]
+    selectedData: Set<T>
     ```
 
-    The array that stores the selected data.
+    The set that stores the selected data.
 
 - `setSelectedData`
 
     ```ts
-    function setSelectedData(data: T[] | ((previousState: T[]) => T[])): void
+    function setSelectedData(data: Set<T> | ((previousState: Set<T>) => Set<T>)): void
     ```
 
     Sets the selected data.
@@ -161,7 +161,7 @@ Contains functions that controls the selection and variables about the selection
     - Another option is to call `setIsSelectionMode` with the new value when changing the selected data with this function. However, the usage of
     `setIsSelectionMode` is not recommended.
 
-    **Obs.**: When using selection mode, its recommended to select the items id instead of items value. Use the items data from the original array Prefer primitive types like `string` or `number`.
+    **Obs.**: When using selection mode, its recommended to select the items id instead of items value. Use the items data from the original set. Prefer primitive types like `string` or `number`.
 
 - `select`
 
@@ -175,9 +175,9 @@ Contains functions that controls the selection and variables about the selection
 
     Params:
 
-    - `item`: The item to be selected. It will be added to the `selectedData` array. The item will be added only if it is not already selected.
+    - `item`: The item to be selected. It will be added to the `selectedData` set.
 
-    **Obs.**: When using selection mode, its recommended to select the items id instead of items value. Use the items data from the original array. Prefer primitive types like string or number.
+    **Obs.**: When using selection mode, its recommended to select the items id instead of items value. Use the items data from the original set. Prefer primitive types like `string` or `number`.
 
 - `deselect`
 
@@ -192,9 +192,9 @@ Contains functions that controls the selection and variables about the selection
 
     Params:
 
-    - `item`: The item to be deselected. It will be removed from the `selectedData` array. If there is more than one occurrence of the item, only the first occurrence will be removed. This can be a problem if you have duplicated items in the array (e.g. through incorrect usage of `setSelectedData`).
+    - `item`: The item to be deselected. It will be removed from the `selectedData` set.
 
-    **Obs.**: When using selection mode, its recommended to select the items id instead of items value. Use the items data from the original array. Prefer primitive types like `string` or `number`.
+    **Obs.**: When using selection mode, its recommended to select the items id instead of items value. Use the items data from the original set. Prefer primitive types like `string` or `number`.
 
 - `exitSelection`
 
