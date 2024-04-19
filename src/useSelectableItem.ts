@@ -1,3 +1,5 @@
+import { useCallback } from "react"
+
 
 export interface SelectableItem {
 
@@ -63,21 +65,32 @@ export interface UseSelectableItem {
 export function useSelectableItem<T extends SelectableItem>(props: T): UseSelectableItem {
 
 
-  function onPress() {
-    if (!props.isSelectionMode) {
-      props.onClick()
-    } else if (!props.isSelected) {
-      props.onSelect()
-    } else if (props.isSelected) {
-      props.onDeselect()
-    }
-  }
+  const { isSelectionMode, isSelected } = props
+  const { onClick, onDeselect, onSelect } = props
 
-  function onLongPress() {
-    if (!props.isSelectionMode) {
-      props.onSelect()
+
+  const toggleSelection = useCallback(() => {
+    if (isSelected) {
+      onDeselect()
+    } else {
+      onSelect()
     }
-  }
+  }, [isSelected, onDeselect, onSelect])
+
+  const onPress = useCallback(() => {
+    if (isSelectionMode) {
+      toggleSelection()
+    } else {
+      onClick()
+    }
+  }, [isSelectionMode, toggleSelection, onClick])
+
+  const onLongPress = useCallback(() => {
+    if (isSelectionMode) {
+      return
+    }
+    onSelect()
+  }, [isSelectionMode, onSelect])
 
 
   return { onPress, onLongPress }
