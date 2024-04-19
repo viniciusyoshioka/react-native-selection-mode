@@ -21,9 +21,9 @@ export interface SelectionMode<T> {
   setIsSelectionMode: React.Dispatch<React.SetStateAction<boolean>>
 
   /**
-   * The array that stores the selected data.
+   * The set that stores the selected data.
    */
-  selectedData: T[]
+  selectedData: Set<T>
 
   /**
    * Sets the selected data.
@@ -41,9 +41,9 @@ export interface SelectionMode<T> {
    *
    * **Obs.**: When using selection mode, its recommended to select the
    * items id instead of items value. Use the items data from the original
-   * array. Prefer primitive types like `string` or `number`.
+   * set. Prefer primitive types like `string` or `number`.
    */
-  setSelectedData: React.Dispatch<React.SetStateAction<T[]>>
+  setSelectedData: React.Dispatch<React.SetStateAction<Set<T>>>
 
   /**
    * Selects the item.
@@ -51,12 +51,11 @@ export interface SelectionMode<T> {
    * If the selection mode is not active, it will be activated.
    *
    * @param item The item to be selected. It will be added to the
-   * `selectedData` array. The item will be added only if it is not
-   * already selected.
+   * `selectedData` set.
    *
    * **Obs.**: When using selection mode, its recommended to select the
    * items id instead of items value. Use the items data from the original
-   * array. Prefer primitive types like `string` or `number`.
+   * set. Prefer primitive types like `string` or `number`.
    */
   select: (item: T) => void
 
@@ -68,14 +67,11 @@ export interface SelectionMode<T> {
    * mode will be deactivated.
    *
    * @param item The item to be deselected. It will be removed from
-   * the `selectedData` array. If there is more than one occurrence
-   * of the item, only the first occurrence will be removed. This
-   * can be a problem if you have duplicated items in the array
-   * (e.g. through incorrect usage of `setSelectedData`).
+   * the `selectedData` set.
    *
    * **Obs.**: When using selection mode, its recommended to select the
    * items id instead of items value. Use the items data from the original
-   * array. Prefer primitive types like `string` or `number`.
+   * set. Prefer primitive types like `string` or `number`.
    */
   deselect: (item: T) => void
 
@@ -90,36 +86,42 @@ export function useSelectionMode<T>(): SelectionMode<T> {
 
 
   const [isSelectionMode, setIsSelectionMode] = useState(false)
-  const [selectedData, setSelectedData] = useState<T[]>([])
+  const [selectedData, setSelectedData] = useState(new Set<T>())
 
 
   const select = useCallback((item: T) => {
     if (!isSelectionMode) {
       setIsSelectionMode(true)
     }
-    if (!selectedData.includes(item)) {
-      setSelectedData(current => [...current, item])
-    }
-  }, [isSelectionMode, selectedData])
+
+    setSelectedData(current => {
+      current.add(item)
+      return current
+    })
+  }, [isSelectionMode])
 
   const deselect = useCallback((item: T) => {
-    const index = selectedData.indexOf(item)
-    if (index === -1) {
+    if (!selectedData.has(item)) {
       return
     }
 
-    const newSelectedData = [...selectedData]
-    newSelectedData.splice(index, 1)
-    setSelectedData(newSelectedData)
+    setSelectedData(current => {
+      current.delete(item)
 
-    if (isSelectionMode && newSelectedData.length === 0) {
-      setIsSelectionMode(false)
-    }
+      if (isSelectionMode && current.size === 0) {
+        setIsSelectionMode(false)
+      }
+
+      return current
+    })
   }, [selectedData, isSelectionMode])
 
   const exitSelection = useCallback(() => {
     setIsSelectionMode(false)
-    setSelectedData([])
+    setSelectedData(current => {
+      current.clear()
+      return current
+    })
   }, [])
 
 
