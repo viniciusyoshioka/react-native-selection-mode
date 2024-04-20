@@ -78,7 +78,7 @@ There are a few observations to know before using this library:
             return (
                 <ListItem
                     isSelectionMode={listSelection.isSelectionMode}
-                    isSelected={listSelection.selectedData.has(index)}
+                    isSelected={listSelection.isSelected(index)}
                     onClick={() => console.log("Click")}
                     onSelect={() => listSelection.select(index)}
                     onDeselect={() => listSelection.deselect(index)}
@@ -112,9 +112,9 @@ The returned object is described at [Interface `SelectionMode`](#interface-selec
 
 Contains functions that controls the selection and variables about the selection state.
 
-`T` is the data type that represents the selected item. It can be the item itself or its id.
+`T` is the data type that represents the selected item.
 
-**Important**: Prefer unique data for each item, such as id, index or uuid. If you choose the item itself, make sure it is not repeated. Otherwise it will cause bugs.
+**Important**: Prefer unique data for each item, such as id, index or uuid. If you choose the item itself, make sure it is not repeated. Otherwise it may cause bugs.
 
 - `isSelectionMode`
 
@@ -124,44 +124,48 @@ Contains functions that controls the selection and variables about the selection
 
     Indicates whether the selection mode is active or not.
 
-- `setIsSelectionMode`
+- `setNewSelectedData`
 
     ```ts
-    function setIsSelectionMode(item: boolean | ((previousState: boolean) => boolean)): void
-    ```
-
-    Sets the selection mode.
-
-    If you deactivate the selection mode, the selected data will not be deselected. You have to do it manually or call `exitSelection`, which is recommended.
-
-    **Attention**: Its not recommended to use this function to change the selection mode. It may be removed in the future.
-
-- `selectedData`
-
-    ```ts
-    selectedData: Set<T>
-    ```
-
-    The set that stores the selected data.
-
-- `setSelectedData`
-
-    ```ts
-    function setSelectedData(data: Set<T> | ((previousState: Set<T>) => Set<T>)): void
+    function setSelectedData(data: Set<T> | ((current: Set<T>) => Set<T>)): void
     ```
 
     Sets the selected data.
 
-    Useful if you want to toggle the selection.
+    Useful if you want to toggle the selection or handle the selected data in a complex way.
+
+    - If the selection mode is active and the new value is an empty set, the selection mode will be deactivated.
+    - If the selection mode is not active and the new value is not an empty set, the selection mode will be activated.
 
     **Attention**:
-    - This function does not check if the item is already selected.
-    - The value passed to this function will replace the current value.
-    - It does not change the selection mode, so, only use if you don't need to change it.
-    - Another option is to call `setIsSelectionMode` with the new value when changing the selected data with this function. However, the usage of
-    `setIsSelectionMode` is not recommended.
+    - This function uses the Set data structure. The type of its params may change in the future according to the internal implementation.
+    - The value passed to this function will replace the current selected data.
 
-    **Obs.**: When using selection mode, its recommended to select the items id instead of items value. Use the items data from the original set. Prefer primitive types like `string` or `number`.
+    Params:
+
+    - `newValue`: The new selected data. Can be a Set or a function that receives the current selected data and returns a one. Similar to the `setState` function.
+
+- `length`
+
+    ```ts
+    function length(): number
+    ```
+
+    Returns: The number of selected items.
+
+- `isSelected`
+
+    ```ts
+    function isSelected(item: T): boolean
+    ```
+
+    Checks if the item is selected.
+
+    Params:
+
+    - `item`: The item to be checked.
+
+    Returns: `true` if the item is selected, `false` otherwise.
 
 - `select`
 
@@ -171,13 +175,12 @@ Contains functions that controls the selection and variables about the selection
 
     Selects the item.
 
-    If the selection mode is not active, it will be activated.
+    - If the item is already selected, nothing happens.
+    - If the selection mode is not active, it will be activated.
 
     Params:
 
-    - `item`: The item to be selected. It will be added to the `selectedData` set.
-
-    **Obs.**: When using selection mode, its recommended to select the items id instead of items value. Use the items data from the original set. Prefer primitive types like `string` or `number`.
+    - `item`: The item to be selected.
 
 - `deselect`
 
@@ -192,9 +195,7 @@ Contains functions that controls the selection and variables about the selection
 
     Params:
 
-    - `item`: The item to be deselected. It will be removed from the `selectedData` set.
-
-    **Obs.**: When using selection mode, its recommended to select the items id instead of items value. Use the items data from the original set. Prefer primitive types like `string` or `number`.
+    - `item`: The item to be deselected.
 
 - `exitSelection`
 
@@ -202,7 +203,7 @@ Contains functions that controls the selection and variables about the selection
     function exitSelection(): void
     ```
 
-    Exits the selection mode and deselect all items.
+    Exits the selection mode and deselects all items.
 
 ### Hook `useSelectableItem`
 
@@ -232,7 +233,7 @@ Contains properties and functions about the selection mode to be handled by [`us
 
     When in selection mode, this function is called when the item is not selected and is pressed.
 
-    If you want to select the item, you still have to call `useSelectionMode().select()` manually. If needed, its also possible to execute other actions.
+    If you want to select the item, you still have to call `useSelectionMode().select()`.
 
 - `onDeselect`
 
@@ -242,7 +243,7 @@ Contains properties and functions about the selection mode to be handled by [`us
 
     When in selection mode, this function is called when the item is is selected and is pressed.
 
-    If you want to deselect the item, you still have to call `useSelectionMode().deselect()` manually. If needed, its also possible to execute other actions.
+    If you want to deselect the item, you still have to call `useSelectionMode().deselect()`.
 
 - `isSelectionMode`
 
@@ -270,7 +271,7 @@ The object's type returned by [`useSelectableItem`](#hook-useselectableitem). It
     function onPress(): void
     ```
 
-    This function should be passed to the components `onPress` or `onClick` prop. It handles whether to call `onClick`, `onSelect` or `onDeselect` from [`SelectableItem`](#interface-selectableitem).
+    This function should be passed to the components `onPress` or `onClick` prop. It handles whether to call `onClick`, `onSelect` or `onDeselect` from `SelectableItem`.
 
 - `onLongPress`
 
