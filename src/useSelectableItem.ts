@@ -14,8 +14,7 @@ export interface SelectableItem {
    * not selected and is pressed.
    *
    * If you want to select the item, you still have to call
-   * `useSelectionMode().select()` manually. If needed, its also possible
-   * to execute other actions.
+   * `useSelectionMode().select()`.
    */
   onSelect: () => void
 
@@ -24,8 +23,7 @@ export interface SelectableItem {
    * is selected and is pressed.
    *
    * If you want to deselect the item, you still have to call
-   * `useSelectionMode().deselect()` manually. If needed, its also possible
-   * to execute other actions.
+   * `useSelectionMode().deselect()`.
    */
   onDeselect: () => void
 
