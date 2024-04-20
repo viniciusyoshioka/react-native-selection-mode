@@ -9,18 +9,6 @@ export interface SelectionMode<T> {
   isSelectionMode: boolean
 
   /**
-   * Sets the selection mode.
-   *
-   * If you deactivate the selection mode, the selected data will not
-   * be deselected. You have to do it manually or call `exitSelection`,
-   * which is recommended.
-   *
-   * **Attention**: Its not recommended to use this function to change
-   * the selection mode. It may be removed in the future.
-   */
-  setIsSelectionMode: React.Dispatch<React.SetStateAction<boolean>>
-
-  /**
    * The set that stores the selected data.
    */
   selectedData: Set<T>
@@ -126,7 +114,6 @@ export function useSelectionMode<T>(): SelectionMode<T> {
 
   return {
     isSelectionMode,
-    setIsSelectionMode,
     selectedData,
     setSelectedData,
     select,
