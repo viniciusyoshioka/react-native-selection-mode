@@ -9,11 +9,6 @@ export interface SelectionMode<T> {
   isSelectionMode: boolean
 
   /**
-   * The set that stores the selected data.
-   */
-  selectedData: Set<T>
-
-  /**
    * Sets the selected data.
    *
    * Useful if you want to toggle the selection.
@@ -136,7 +131,6 @@ export function useSelectionMode<T>(): SelectionMode<T> {
 
   return {
     isSelectionMode,
-    selectedData,
     setSelectedData,
     length,
     isSelected,
