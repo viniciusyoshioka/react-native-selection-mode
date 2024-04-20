@@ -24,11 +24,11 @@ export function ListScreen() {
 
 
   function toggleSelection() {
-    listSelection.setSelectedData(current => {
-      const newSelectedData: number[] = []
+    listSelection.setNewSelectedData(current => {
+      const newSelectedData = new Set<number>()
       listData.forEach((_, index) => {
-        if (!current.includes(index)) {
-          newSelectedData.push(index)
+        if (!current.has(index)) {
+          newSelectedData.add(index)
         }
       })
       return newSelectedData
@@ -40,7 +40,7 @@ export function ListScreen() {
       <ListItem
         text={`Index: ${index}`}
         isSelectionMode={listSelection.isSelectionMode}
-        isSelected={listSelection.selectedData.includes(index)}
+        isSelected={listSelection.isSelected(index)}
         onClick={() => Alert.alert("Item clicked", `You clicked on item at index: ${index}`)}
         onSelect={() => listSelection.select(index)}
         onDeselect={() => listSelection.deselect(index)}
@@ -53,7 +53,7 @@ export function ListScreen() {
     <View style={styles.background}>
       <Header
         isSelectionMode={listSelection.isSelectionMode}
-        selectedCount={listSelection.selectedData.length}
+        selectedCount={listSelection.length()}
         exitSelectionMode={listSelection.exitSelection}
         toggleSelection={toggleSelection}
       />
