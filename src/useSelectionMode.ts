@@ -34,6 +34,15 @@ export interface SelectionMode<T> {
   setSelectedData: React.Dispatch<React.SetStateAction<Set<T>>>
 
   /**
+   * Checks if the item is selected.
+   *
+   * @param item The item to be checked.
+   *
+   * @returns `true` if the item is selected, `false` otherwise.
+   */
+  isSelected: (item: T) => boolean
+
+  /**
    * Selects the item.
    *
    * If the selection mode is not active, it will be activated.
@@ -77,6 +86,10 @@ export function useSelectionMode<T>(): SelectionMode<T> {
   const [selectedData, setSelectedData] = useState(new Set<T>())
 
 
+  const isSelected = useCallback((item: T) => {
+    return selectedData.has(item)
+  }, [selectedData])
+
   const select = useCallback((item: T) => {
     if (!isSelectionMode) {
       setIsSelectionMode(true)
@@ -116,6 +129,7 @@ export function useSelectionMode<T>(): SelectionMode<T> {
     isSelectionMode,
     selectedData,
     setSelectedData,
+    isSelected,
     select,
     deselect,
     exitSelection,
