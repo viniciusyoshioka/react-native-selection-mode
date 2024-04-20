@@ -11,22 +11,23 @@ export interface SelectionMode<T> {
   /**
    * Sets the selected data.
    *
-   * Useful if you want to toggle the selection.
+   * Useful if you want to toggle the selection or handle the selected data
+   * in a complex way.
+   *
+   * - If the selection mode is active and the new value is an empty set,
+   * the selection mode will be deactivated.
+   * - If the selection mode is not active and the new value is not an empty set,
+   * the selection mode will be activated.
    *
    * **Attention**:
-   * - This function does not check if the item is already selected.
-   * - The value passed to this function will replace the current value.
-   * - It does not change the selection mode, so, only use if you don't need
-   * to change it.
-   * - Another option is to call `setIsSelectionMode` with the new value when
-   * changing the selected data with this function. However, the usage of
-   * `setIsSelectionMode` is not recommended.
+   * - This function uses the Set data structure. The type of its params may change
+   * in the future according to the internal implementation.
+   * - The value passed to this function will replace the current selected data.
    *
-   * **Obs.**: When using selection mode, its recommended to select the
-   * items id instead of items value. Use the items data from the original
-   * set. Prefer primitive types like `string` or `number`.
+   * @param newValue The new selected data. Can be a Set or a function that receives
+   * the current selected data and returns a one. Similar to the `setState` function.
    */
-  setSelectedData: React.Dispatch<React.SetStateAction<Set<T>>>
+  setNewSelectedData: (newValue: Set<T> | ((current: Set<T>) => Set<T>)) => void
 
   /**
    * @returns The number of selected items.
@@ -77,6 +78,22 @@ export function useSelectionMode<T>(): SelectionMode<T> {
   const [selectedData, setSelectedData] = useState(new Set<T>())
 
 
+  const setNewSelectedData = useCallback((
+    newValue: Set<T> | ((current: Set<T>) => Set<T>)
+  ) => {
+    if (typeof newValue === "function") {
+      newValue = newValue(selectedData)
+    }
+
+    if (isSelectionMode && newValue.size === 0) {
+      setIsSelectionMode(false)
+    }
+    if (!isSelectionMode && newValue.size > 0) {
+      setIsSelectionMode(true)
+    }
+    setSelectedData(newValue)
+  }, [selectedData, isSelectionMode])
+
   const length = useCallback(() => {
     return selectedData.size
   }, [selectedData])
@@ -122,7 +139,7 @@ export function useSelectionMode<T>(): SelectionMode<T> {
 
   return {
     isSelectionMode,
-    setSelectedData,
+    setNewSelectedData,
     length,
     isSelected,
     select,
