@@ -95,8 +95,9 @@ export function useSelectionMode<T>(): SelectionMode<T> {
     }
 
     setSelectedData(current => {
-      current.add(item)
-      return current
+      const newSelectedData = new Set(current)
+      newSelectedData.add(item)
+      return newSelectedData
     })
   }, [isSelectionMode])
 
@@ -105,15 +106,13 @@ export function useSelectionMode<T>(): SelectionMode<T> {
       return
     }
 
-    setSelectedData(current => {
-      current.delete(item)
+    const newSelectedData = new Set(selectedData)
+    newSelectedData.delete(item)
+    setSelectedData(newSelectedData)
 
-      if (isSelectionMode && current.size === 0) {
-        setIsSelectionMode(false)
-      }
-
-      return current
-    })
+    if (isSelectionMode && newSelectedData.size === 0) {
+      setIsSelectionMode(false)
+    }
   }, [selectedData, isSelectionMode])
 
   const exitSelection = useCallback(() => {
