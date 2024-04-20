@@ -34,6 +34,11 @@ export interface SelectionMode<T> {
   setSelectedData: React.Dispatch<React.SetStateAction<Set<T>>>
 
   /**
+   * @returns The number of selected items.
+   */
+  length: () => number
+
+  /**
    * Checks if the item is selected.
    *
    * @param item The item to be checked.
@@ -86,6 +91,10 @@ export function useSelectionMode<T>(): SelectionMode<T> {
   const [selectedData, setSelectedData] = useState(new Set<T>())
 
 
+  const length = useCallback(() => {
+    return selectedData.size
+  }, [selectedData])
+
   const isSelected = useCallback((item: T) => {
     return selectedData.has(item)
   }, [selectedData])
@@ -129,6 +138,7 @@ export function useSelectionMode<T>(): SelectionMode<T> {
     isSelectionMode,
     selectedData,
     setSelectedData,
+    length,
     isSelected,
     select,
     deselect,
