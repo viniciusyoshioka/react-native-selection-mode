@@ -45,14 +45,10 @@ export interface SelectionMode<T> {
   /**
    * Selects the item.
    *
-   * If the selection mode is not active, it will be activated.
+   * - If the item is already selected, nothing happens.
+   * - If the selection mode is not active, it will be activated.
    *
-   * @param item The item to be selected. It will be added to the
-   * `selectedData` set.
-   *
-   * **Obs.**: When using selection mode, its recommended to select the
-   * items id instead of items value. Use the items data from the original
-   * set. Prefer primitive types like `string` or `number`.
+   * @param item The item to be selected.
    */
   select: (item: T) => void
 
@@ -63,17 +59,12 @@ export interface SelectionMode<T> {
    * - If there is no item selected after deselect, the selection
    * mode will be deactivated.
    *
-   * @param item The item to be deselected. It will be removed from
-   * the `selectedData` set.
-   *
-   * **Obs.**: When using selection mode, its recommended to select the
-   * items id instead of items value. Use the items data from the original
-   * set. Prefer primitive types like `string` or `number`.
+   * @param item The item to be deselected.
    */
   deselect: (item: T) => void
 
   /**
-   * Exits the selection mode and deselect all items.
+   * Exits the selection mode and deselects all items.
    */
   exitSelection: () => void
 }
