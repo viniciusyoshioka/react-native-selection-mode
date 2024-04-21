@@ -124,6 +124,14 @@ Contains functions that controls the selection and variables about the selection
 
     Indicates whether the selection mode is active or not.
 
+- `getSelectedData`
+
+    ```ts
+    function getSelectedData(): T[]
+    ```
+
+    Returns: The selected data as array.
+
 - `setNewSelectedData`
 
     ```ts
