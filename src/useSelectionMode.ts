@@ -9,6 +9,11 @@ export interface SelectionMode<T> {
   isSelectionMode: boolean
 
   /**
+   * @returns The selected data as array.
+   */
+  getSelectedData: () => T[]
+
+  /**
    * Sets the selected data.
    *
    * Useful if you want to toggle the selection or handle the selected data
@@ -78,6 +83,10 @@ export function useSelectionMode<T>(): SelectionMode<T> {
   const [selectedData, setSelectedData] = useState(new Set<T>())
 
 
+  const getSelectedData = useCallback(() => {
+    return Array.from(selectedData)
+  }, [selectedData])
+
   const setNewSelectedData = useCallback((
     newValue: Set<T> | ((current: Set<T>) => Set<T>)
   ) => {
@@ -139,6 +148,7 @@ export function useSelectionMode<T>(): SelectionMode<T> {
 
   return {
     isSelectionMode,
+    getSelectedData,
     setNewSelectedData,
     length,
     isSelected,
