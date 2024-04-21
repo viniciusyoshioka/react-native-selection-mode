@@ -103,6 +103,7 @@ export function useSelectionMode<T>(): SelectionMode<T> {
     setSelectedData(newValue)
   }, [selectedData, isSelectionMode])
 
+
   const length = useCallback(() => {
     return selectedData.size
   }, [selectedData])
@@ -110,6 +111,7 @@ export function useSelectionMode<T>(): SelectionMode<T> {
   const isSelected = useCallback((item: T) => {
     return selectedData.has(item)
   }, [selectedData])
+
 
   const select = useCallback((item: T) => {
     if (!isSelectionMode) {
