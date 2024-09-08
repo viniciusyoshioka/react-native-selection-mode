@@ -156,10 +156,10 @@ Contains functions that controls the selection and variables about the selection
 - `length`
 
     ```ts
-    function length(): number
+    length: number
     ```
 
-    Returns: The number of selected items.
+    The number of selected items.
 
 - `isSelected`
 

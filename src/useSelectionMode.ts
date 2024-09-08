@@ -35,9 +35,9 @@ export interface SelectionMode<T> {
   setNewSelectedData: (newValue: Set<T> | ((current: Set<T>) => Set<T>)) => void
 
   /**
-   * @returns The number of selected items.
+   * The number of selected items.
    */
-  length: () => number
+  length: number
 
   /**
    * Checks if the item is selected.
@@ -104,9 +104,7 @@ export function useSelectionMode<T>(): SelectionMode<T> {
   }, [selectedData, isSelectionMode])
 
 
-  const length = useCallback(() => {
-    return selectedData.size
-  }, [selectedData])
+  const length = selectedData.size
 
   const isSelected = useCallback((item: T) => {
     return selectedData.has(item)
