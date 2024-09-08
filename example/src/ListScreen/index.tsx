@@ -4,7 +4,7 @@ import { useSelectionMode } from "react-native-selection-mode"
 
 import { Header } from "./Header"
 import { ListItem } from "./ListItem"
-import { useBackhandler } from "./useBackhandler"
+import { useBackHandler } from "./useBackHandler"
 
 
 export function ListScreen() {
@@ -14,7 +14,7 @@ export function ListScreen() {
   const listSelection = useSelectionMode<number>()
 
 
-  useBackhandler(() => {
+  useBackHandler(() => {
     if (listSelection.isSelectionMode) {
       listSelection.exitSelection()
       return true
