@@ -24,7 +24,7 @@ export function ListItem(props: ListItemProps) {
     .onStart(event => onLongPress())
 
 
-  function UnkmarkedIcon() {
+  function UnmarkedIcon() {
     return (
       <Icon
         name={"checkbox-blank-outline"}
@@ -49,7 +49,7 @@ export function ListItem(props: ListItemProps) {
   function SelectionIcon() {
     if (!props.isSelectionMode) return null
     if (props.isSelected) return <MarkedIcon />
-    return <UnkmarkedIcon />
+    return <UnmarkedIcon />
   }
 
 
