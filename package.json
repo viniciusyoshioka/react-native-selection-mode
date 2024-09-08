@@ -45,14 +45,14 @@
     "react": "*"
   },
   "devDependencies": {
-    "@stylistic/eslint-plugin": "^1.7.0",
+    "@stylistic/eslint-plugin": "^2.7.2",
     "@types/react": "^18.2.55",
-    "@typescript-eslint/eslint-plugin": "^7.3.1",
-    "@typescript-eslint/parser": "^7.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
     "@vinicius1313/eslint-config": "^1.2.2",
     "@vinicius1313/tsconfig": "^1.0.0",
-    "eslint": "^8.57.0",
-    "react-native-builder-bob": "^0.23.2",
+    "eslint": "^9.10.0",
+    "react-native-builder-bob": "^0.30.2",
     "typescript": "^5.4.2"
   },
   "react-native-builder-bob": {
