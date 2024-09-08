@@ -271,7 +271,7 @@ Contains properties and functions about the selection mode to be handled by [`us
 
 ### Interface `UseSelectableItem`
 
-The object's type returned by [`useSelectableItem`](#hook-useselectableitem). It contains functions to be used by a selectable list item. Those functions manages when to call `onClick`, `onSelect` and `onDeselect` according to selection mode and the item's selection, as the same click event can represent diferent action in the context of selection mode.
+The object's type returned by [`useSelectableItem`](#hook-useselectableitem). It contains functions to be used by a selectable list item. Those functions manages when to call `onClick`, `onSelect` and `onDeselect` according to selection mode and the item's selection, as the same click event can represent different action in the context of selection mode.
 
 - `onPress`
 
