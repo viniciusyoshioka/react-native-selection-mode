@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useCallback, useState } from 'react'
 
 
 export interface SelectionMode<T> {
@@ -88,9 +88,9 @@ export function useSelectionMode<T>(): SelectionMode<T> {
   }, [selectedData])
 
   const setNewSelectedData = useCallback((
-    newValue: Set<T> | ((current: Set<T>) => Set<T>)
+    newValue: Set<T> | ((current: Set<T>) => Set<T>),
   ) => {
-    if (typeof newValue === "function") {
+    if (typeof newValue === 'function') {
       newValue = newValue(selectedData)
     }
 

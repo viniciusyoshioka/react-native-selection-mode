@@ -1,4 +1,4 @@
-import { useCallback } from "react"
+import { useCallback } from 'react'
 
 
 export interface SelectableItem {
@@ -60,7 +60,7 @@ export interface UseSelectableItem {
 }
 
 
-export function useSelectableItem<T extends SelectableItem>(props: T): UseSelectableItem {
+export function useSelectableItem(props: SelectableItem): UseSelectableItem {
 
 
   const { isSelectionMode, isSelected } = props
