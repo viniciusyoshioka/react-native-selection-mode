@@ -34,7 +34,7 @@
     ],
     "scripts": {
         "typecheck": "tsc --noEmit",
-        "lint": "eslint '**/*.{js,ts,tsx}'",
+        "lint": "eslint '**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}'",
         "bootstrap": "yarn && cd example && yarn",
         "example": "yarn --cwd example",
         "start": "yarn --cwd example start",
