@@ -1,14 +1,11 @@
 {
-  "extends": "@vinicius1313/tsconfig/tsconfig.json",
-  "compilerOptions": {
-    "paths": {},
-  },
-  "include": [
-    "src/**/*",
-  ],
-  "exclude": [
-    "example",
-    "lib",
-    "node_modules",
-  ],
+    "extends": "@vinicius1313/tsconfig/tsconfig.json",
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "example",
+        "lib",
+        "node_modules"
+    ]
 }
