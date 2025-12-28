@@ -20,7 +20,7 @@ There are a few observations to know before using this library:
 
 - Only function components are supported.
 - Should work without React Native as long as you can detect the long press gesture or activate the selection mode manually.
-- The example app and [Usage](#usage) section contains React Native code. However, you can adapt it if you don't use React Native.
+- The [Usage](#usage) section contains React Native code. However, you can adapt it if you don't use React Native.
 
 ## Usage
 

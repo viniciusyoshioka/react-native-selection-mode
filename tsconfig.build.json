@@ -4,7 +4,6 @@
         "src/**/*"
     ],
     "exclude": [
-        "example",
         "lib",
         "node_modules",
         "babel.config.js",

@@ -6,7 +6,6 @@
         "eslint.config.js"
     ],
     "exclude": [
-        "example",
         "lib",
         "node_modules"
     ]

@@ -35,11 +35,6 @@
     "scripts": {
         "typecheck": "tsc --noEmit",
         "lint": "eslint '**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}'",
-        "bootstrap": "yarn && cd example && yarn",
-        "example": "yarn --cwd example",
-        "start": "yarn --cwd example start",
-        "android": "yarn --cwd example android",
-        "ios": "yarn --cwd example ios",
         "build": "bob build"
     },
     "peerDependencies": {
