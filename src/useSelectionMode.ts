@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 
 
 export interface SelectionMode<T> {
@@ -146,7 +146,18 @@ export function useSelectionMode<T>(): SelectionMode<T> {
   }, [])
 
 
-  return {
+  const selectionMode = useMemo(() => {
+    return {
+      isSelectionMode,
+      getSelectedData,
+      setNewSelectedData,
+      length,
+      isSelected,
+      select,
+      deselect,
+      exitSelection,
+    }
+  }, [
     isSelectionMode,
     getSelectedData,
     setNewSelectedData,
@@ -155,5 +166,8 @@ export function useSelectionMode<T>(): SelectionMode<T> {
     select,
     deselect,
     exitSelection,
-  }
+  ])
+
+
+  return selectionMode
 }

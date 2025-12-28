@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 
 
 export interface SelectableItem {
@@ -91,5 +91,13 @@ export function useSelectableItem(props: SelectableItem): UseSelectableItem {
   }, [isSelectionMode, onSelect])
 
 
-  return { onPress, onLongPress }
+  const selectableItem = useMemo(() => {
+    return {
+      onPress,
+      onLongPress,
+    }
+  }, [onPress, onLongPress])
+
+
+  return selectableItem
 }
