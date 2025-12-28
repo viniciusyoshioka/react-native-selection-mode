@@ -6,7 +6,11 @@ Library to handle selection mode.
 
 ```sh
 npm install react-native-selection-mode
-# or
+```
+
+or
+
+```sh
 yarn add react-native-selection-mode
 ```
 
