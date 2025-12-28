@@ -47,11 +47,11 @@
     },
     "devDependencies": {
         "@stylistic/eslint-plugin": "^5.6.1",
-        "@types/react": "^18.2.55",
+        "@types/react": "^19.2.7",
         "@vinicius1313/eslint-config": "^2.1.0",
         "@vinicius1313/tsconfig": "^2.0.0",
         "eslint": "^9.39.2",
-        "react-native-builder-bob": "^0.30.2",
+        "react-native-builder-bob": "^0.40.17",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.50.1"
     },
