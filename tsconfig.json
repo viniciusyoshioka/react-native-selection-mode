@@ -1,7 +1,9 @@
 {
     "extends": "@vinicius1313/tsconfig/tsconfig.json",
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "babel.config.js",
+        "eslint.config.js"
     ],
     "exclude": [
         "example",
