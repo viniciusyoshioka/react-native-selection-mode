@@ -1,13 +1,13 @@
 import { useCallback, useMemo } from 'react'
 
 
-export interface SelectableItem {
+export interface SelectableItem<U = unknown> {
 
   /**
    * Function called when the item is clicked and the component is not
    * in selection mode. Similar to `onPress`.
    */
-  onClick: () => void
+  onClick: (item: U) => void
 
   /**
    * When in selection mode, this function is called when the item is
@@ -16,7 +16,7 @@ export interface SelectableItem {
    * If you want to select the item, you still have to call
    * `useSelectionMode().select()`.
    */
-  onSelect: () => void
+  onSelect: (item: U) => void
 
   /**
    * When in selection mode, this function is called when the item is
@@ -25,7 +25,7 @@ export interface SelectableItem {
    * If you want to deselect the item, you still have to call
    * `useSelectionMode().deselect()`.
    */
-  onDeselect: () => void
+  onDeselect: (item: U) => void
 
   /**
    * Indicates the selection mode state to the component.
@@ -60,7 +60,10 @@ export interface UseSelectableItem {
 }
 
 
-export function useSelectableItem(props: SelectableItem): UseSelectableItem {
+export function useSelectableItem<U = unknown>(
+  props: SelectableItem<U>,
+  item: U,
+): UseSelectableItem {
 
 
   const { isSelectionMode, isSelected } = props
@@ -69,26 +72,26 @@ export function useSelectableItem(props: SelectableItem): UseSelectableItem {
 
   const toggleSelection = useCallback(() => {
     if (isSelected) {
-      onDeselect()
+      onDeselect(item)
     } else {
-      onSelect()
+      onSelect(item)
     }
-  }, [isSelected, onDeselect, onSelect])
+  }, [isSelected, onDeselect, onSelect, item])
 
   const onPress = useCallback(() => {
     if (isSelectionMode) {
       toggleSelection()
     } else {
-      onClick()
+      onClick(item)
     }
-  }, [isSelectionMode, toggleSelection, onClick])
+  }, [isSelectionMode, toggleSelection, onClick, item])
 
   const onLongPress = useCallback(() => {
     if (isSelectionMode) {
       return
     }
-    onSelect()
-  }, [isSelectionMode, onSelect])
+    onSelect(item)
+  }, [isSelectionMode, onSelect, item])
 
 
   const selectableItem = useMemo(() => {

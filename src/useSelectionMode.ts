@@ -124,18 +124,20 @@ export function useSelectionMode<T>(): SelectionMode<T> {
   }, [isSelectionMode])
 
   const deselect = useCallback((item: T) => {
-    if (!selectedData.has(item)) {
-      return
-    }
+    setSelectedData(currentSelectedData => {
+      if (!currentSelectedData.has(item)) {
+        return currentSelectedData
+      }
 
-    const newSelectedData = new Set(selectedData)
-    newSelectedData.delete(item)
-    setSelectedData(newSelectedData)
+      const newSelectedData = new Set(currentSelectedData)
+      newSelectedData.delete(item)
 
-    if (isSelectionMode && newSelectedData.size === 0) {
-      setIsSelectionMode(false)
-    }
-  }, [selectedData, isSelectionMode])
+      if (isSelectionMode && newSelectedData.size === 0) {
+        setIsSelectionMode(false)
+      }
+      return newSelectedData
+    })
+  }, [isSelectionMode])
 
   const exitSelection = useCallback(() => {
     setIsSelectionMode(false)
