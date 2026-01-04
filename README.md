@@ -225,14 +225,22 @@ function useSelectableItem<T extends SelectableItem>(props: T): UseSelectableIte
 
 Consumes the selection mode from [`useSelectionMode`](#hook-useselectionmode) passed to the component through [`SelectableItem` interface](#interface-selectableitem). Its returned object is [`UseSelectableItem`](#interface-useselectableitem). This hook must be called in the items components.
 
-### Interface `SelectableItem`
+### Interface `SelectableItem<T>`
 
 Contains properties and functions about the selection mode to be handled by [`useSelectableItem`](#hook-useselectableitem).
 
+- `item`
+
+    ```ts
+    item: T
+    ```
+
+    The value of what is being selected
+  
 - `onClick`
 
     ```ts
-    function onClick(): void
+    function onClick(item: T): void
     ```
 
     Function called when the item is clicked and the component is not in selection mode. Similar to `onPress`.
@@ -240,7 +248,7 @@ Contains properties and functions about the selection mode to be handled by [`us
 - `onSelect`
 
     ```ts
-    function onSelect(): void
+    function onSelect(item: T): void
     ```
 
     When in selection mode, this function is called when the item is not selected and is pressed.
@@ -250,10 +258,10 @@ Contains properties and functions about the selection mode to be handled by [`us
 - `onDeselect`
 
     ```ts
-    function onDeselect(): void
+    function onDeselect(item: T): void
     ```
 
-    When in selection mode, this function is called when the item is is selected and is pressed.
+    When in selection mode, this function is called when the item is selected and is pressed.
 
     If you want to deselect the item, you still have to call `useSelectionMode().deselect()`.
 

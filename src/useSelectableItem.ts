@@ -1,13 +1,18 @@
 import { useCallback, useMemo } from 'react'
 
 
-export interface SelectableItem<U = unknown> {
+export interface SelectableItem<T = unknown> {
+
+  /**
+   * The value of what is being selected
+   */
+  item: T
 
   /**
    * Function called when the item is clicked and the component is not
    * in selection mode. Similar to `onPress`.
    */
-  onClick: (item: U) => void
+  onClick: (item: T) => void
 
   /**
    * When in selection mode, this function is called when the item is
@@ -16,7 +21,7 @@ export interface SelectableItem<U = unknown> {
    * If you want to select the item, you still have to call
    * `useSelectionMode().select()`.
    */
-  onSelect: (item: U) => void
+  onSelect: (item: T) => void
 
   /**
    * When in selection mode, this function is called when the item
@@ -25,7 +30,7 @@ export interface SelectableItem<U = unknown> {
    * If you want to deselect the item, you still have to call
    * `useSelectionMode().deselect()`.
    */
-  onDeselect: (item: U) => void
+  onDeselect: (item: T) => void
 
   /**
    * Indicates the selection mode state to the component.
@@ -60,13 +65,12 @@ export interface UseSelectableItem {
 }
 
 
-export function useSelectableItem<U = unknown>(
-  props: SelectableItem<U>,
-  item: U,
+export function useSelectableItem<T = unknown>(
+  props: SelectableItem<T>,
 ): UseSelectableItem {
 
 
-  const { isSelectionMode, isSelected } = props
+  const { isSelectionMode, isSelected, item } = props
   const { onClick, onDeselect, onSelect } = props
 
 
