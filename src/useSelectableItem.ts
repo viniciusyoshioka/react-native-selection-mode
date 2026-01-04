@@ -19,7 +19,7 @@ export interface SelectableItem<U = unknown> {
   onSelect: (item: U) => void
 
   /**
-   * When in selection mode, this function is called when the item is
+   * When in selection mode, this function is called when the item
    * is selected and is pressed.
    *
    * If you want to deselect the item, you still have to call
