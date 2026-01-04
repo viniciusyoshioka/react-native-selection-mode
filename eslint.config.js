@@ -8,6 +8,12 @@ export default [
     languageOptions: {
       parserOptions: {
         tsconfigRootDir: import.meta.dirname,
+        projectService: {
+          allowDefaultProject: [
+            'babel.config.js',
+            'eslint.config.js',
+          ],
+        },
       },
     },
   },

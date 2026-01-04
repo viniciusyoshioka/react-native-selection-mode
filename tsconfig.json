@@ -2,8 +2,6 @@
     "extends": "@vinicius1313/tsconfig/tsconfig.json",
     "include": [
         "src/**/*",
-        "babel.config.js",
-        "eslint.config.js"
     ],
     "exclude": [
         "lib",
