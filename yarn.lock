@@ -1438,10 +1438,10 @@
     "@typescript-eslint/types" "8.50.1"
     eslint-visitor-keys "^4.2.1"
 
-"@vinicius1313/eslint-config@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@vinicius1313/eslint-config/-/eslint-config-2.1.0.tgz#c8f7c1322fa056c77cd8adbac4b9809dc04345a7"
-  integrity sha512-AAkZic1TKeI2DH7UYvB8T9N5BTlXAuHgXcSKx1vo22d4EIg2Ml1NRUtLskdi8E/UhYGfpZl/crLztknohOEAeA==
+"@vinicius1313/eslint-config@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@vinicius1313/eslint-config/-/eslint-config-2.2.0.tgz#3ca98f5d09763dc9301ea3a548d637dff6f6ab73"
+  integrity sha512-1ZTAMkcUrIleSHq7rBORqAgHivP2XMIJMglM2UMoNn9seE1u+wJKEjgPQfD1nRh9V+moK8+5EutULoSkegRVAA==
 
 "@vinicius1313/tsconfig@^2.0.0":
   version "2.0.0"
