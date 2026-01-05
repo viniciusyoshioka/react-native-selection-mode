@@ -220,7 +220,7 @@ Contains functions that controls the selection and variables about the selection
 ### Hook `useSelectableItem`
 
 ```ts
-function useSelectableItem<T extends SelectableItem>(props: T): UseSelectableItem
+function useSelectableItem<T = unknown>(props: SelectableItem<T>): UseSelectableItem
 ```
 
 Consumes the selection mode from [`useSelectionMode`](#hook-useselectionmode) passed to the component through [`SelectableItem` interface](#interface-selectableitem). Its returned object is [`UseSelectableItem`](#interface-useselectableitem). This hook must be called in the items components.
