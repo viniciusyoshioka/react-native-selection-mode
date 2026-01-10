@@ -82,6 +82,7 @@ export function useSelectableItem<T = unknown>(
     }
   }, [isSelected, onDeselect, onSelect, item])
 
+
   const onPress = useCallback(() => {
     if (isSelectionMode) {
       toggleSelection()
