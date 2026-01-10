@@ -139,7 +139,7 @@ Contains functions that controls the selection and variables about the selection
 - `setNewSelectedData`
 
     ```ts
-    function setSelectedData(data: Set<T> | ((current: Set<T>) => Set<T>)): void
+    function setNewSelectedData(newValue: Set<T> | ((current: Set<T>) => Set<T>)): void
     ```
 
     Sets the selected data.
@@ -150,12 +150,12 @@ Contains functions that controls the selection and variables about the selection
     - If the selection mode is not active and the new value is not an empty set, the selection mode will be activated.
 
     **Attention**:
-    - This function uses the Set data structure. The type of its params may change in the future according to the internal implementation.
+    - This function uses the `Set` data structure. The type of its params may change in the future according to the internal implementation.
     - The value passed to this function will replace the current selected data.
 
     Params:
 
-    - `newValue`: The new selected data. Can be a Set or a function that receives the current selected data and returns a one. Similar to the `setState` function.
+    - `newValue`: The new selected data. Can be a Set or a function that receives the current selected data and returns a new one. Similar to the `setState` function.
 
 - `length`
 
@@ -236,7 +236,7 @@ Contains properties and functions about the selection mode to be handled by [`us
     ```
 
     The value of what is being selected
-  
+
 - `onClick`
 
     ```ts

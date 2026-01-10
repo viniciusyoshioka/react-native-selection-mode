@@ -25,12 +25,12 @@ export interface SelectionMode<T> {
    * the selection mode will be activated.
    *
    * **Attention**:
-   * - This function uses the Set data structure. The type of its params may change
+   * - This function uses the `Set` data structure. The type of its params may change
    * in the future according to the internal implementation.
    * - The value passed to this function will replace the current selected data.
    *
-   * @param newValue The new selected data. Can be a Set or a function that receives
-   * the current selected data and returns a one. Similar to the `setState` function.
+   * @param newValue The new selected data. Can be a `Set` or a function that receives
+   * the current selected data and returns a new one. Similar to the `setState` function.
    */
   setNewSelectedData: (newValue: Set<T> | ((current: Set<T>) => Set<T>)) => void
 
