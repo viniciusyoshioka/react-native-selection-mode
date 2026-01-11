@@ -31,31 +31,32 @@ There are a few observations to know before using this library:
 
     import { Pressable } from "react-native"
     import { Gesture, GestureDetector } from "react-native-gesture-handler"
-    import { SelectableItem, useSelectableItem } from "react-native-selection-mode"
+    import type { SelectableItem } from "react-native-selection-mode"
+    import { useSelectableItem } from "react-native-selection-mode"
 
 
-    export interface ListItemProps extends SelectableItem {}
+    export interface ListItemProps extends SelectableItem<number> {}
 
 
     export function ListItem(props: ListItemProps) {
 
 
-        const { onPress, onLongPress } = useSelectableItem(props)
+      const { onPress, onLongPress } = useSelectableItem(props)
 
 
-        const longPressGesture = Gesture.LongPress()
-            .maxDistance(30)
-            .minDuration(400)
-            .onStart(event => onLongPress())
+      const longPressGesture = Gesture.LongPress()
+        .maxDistance(30)
+        .minDuration(400)
+        .onStart(event => onLongPress())
 
 
-        return (
-            <GestureDetector gesture={longPressGesture}>
-                <Pressable onPress={onPress}>
-                    {/* ... */}
-                </Pressable>
-            </GestureDetector>
-        )
+      return (
+        <GestureDetector gesture={longPressGesture}>
+          <Pressable onPress={onPress}>
+            {/* ... */}
+          </Pressable>
+        </GestureDetector>
+      )
     }
     ```
 
@@ -64,8 +65,9 @@ There are a few observations to know before using this library:
     ```tsx
     // List.tsx
 
-    import { useState } from "react"
-    import { ListRenderItemInfo } from "react-native"
+    import { useCallback, useState } from "react"
+    import type { ListRenderItemInfo } from "react-native"
+    import { FlatList } from "react-native"
     import { useSelectionMode } from "react-native-selection-mode"
 
     import { ListItem } from "./ListItem"
@@ -74,29 +76,50 @@ There are a few observations to know before using this library:
     export function List() {
 
 
-        const [data, setData] = useState<number[]>([])
-        const listSelection = useSelectionMode<number>()
+      const [data, setData] = useState<number[]>([])
+      const listSelection = useSelectionMode<number>()
 
 
-        function renderItem({ item, index }: ListRenderItemInfo<number>) {
-            return (
-                <ListItem
-                    isSelectionMode={listSelection.isSelectionMode}
-                    isSelected={listSelection.isSelected(index)}
-                    onClick={() => console.log("Click")}
-                    onSelect={() => listSelection.select(index)}
-                    onDeselect={() => listSelection.deselect(index)}
-                />
-            )
-        }
+      const onClickItem = useCallback((item: number) => {
+        // ...
+      }, [])
 
+      const onSelect = useCallback((item: number) => {
+        listSelection.select(item)
+      }, [listSelection.select])
+
+      const onDeselect = useCallback((item: number) => {
+        listSelection.deselect(item)
+      }, [listSelection.deselect])
+
+      const renderItem = useCallback(({ item, index }: ListRenderItemInfo<number>) => {
+        const isSelected = listSelection.isSelected(item)
 
         return (
-            <FlatList
-                data={data}
-                renderItem={renderItem}
-            />
+          <ListItem
+            item={item}
+            isSelectionMode={listSelection.isSelectionMode}
+            isSelected={isSelected}
+            onClick={onClickItem}
+            onSelect={onSelect}
+            onDeselect={onDeselect}
+          />
         )
+      }, [
+        listSelection.isSelectionMode,
+        listSelection.isSelected,
+        onClickItem,
+        onSelect,
+        onDeselect,
+      ])
+
+
+      return (
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+        />
+      )
     }
     ```
 
