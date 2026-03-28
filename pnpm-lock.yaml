@@ -13,28 +13,28 @@ importers:
         version: 19.2.4
     devDependencies:
       '@stylistic/eslint-plugin':
-        specifier: ^5.6.1
+        specifier: ^5.10.0
         version: 5.10.0(eslint@9.39.4)
       '@types/react':
-        specifier: ^19.2.7
+        specifier: ^19.2.14
         version: 19.2.14
       '@vinicius1313/eslint-config':
-        specifier: ^2.2.0
+        specifier: ^2.2.1
         version: 2.2.1(@stylistic/eslint-plugin@5.10.0(eslint@9.39.4))(eslint@9.39.4)(typescript-eslint@8.57.2(eslint@9.39.4)(typescript@5.9.3))(typescript@5.9.3)
       '@vinicius1313/tsconfig':
         specifier: ^2.0.0
         version: 2.0.0
       eslint:
-        specifier: ^9.39.2
+        specifier: ^9.39.4
         version: 9.39.4
       react-native-builder-bob:
-        specifier: ^0.40.17
+        specifier: ^0.40.18
         version: 0.40.18
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
       typescript-eslint:
-        specifier: ^8.50.1
+        specifier: ^8.57.2
         version: 8.57.2(eslint@9.39.4)(typescript@5.9.3)
 
 packages:
