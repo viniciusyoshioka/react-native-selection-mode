@@ -11,6 +11,12 @@ npm install react-native-selection-mode
 or
 
 ```sh
+pnpm add react-native-selection-mode
+```
+
+or
+
+```sh
 yarn add react-native-selection-mode
 ```
 
