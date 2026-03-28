@@ -43,7 +43,7 @@
     "devDependencies": {
         "@stylistic/eslint-plugin": "^5.10.0",
         "@types/react": "^19.2.14",
-        "@vinicius1313/eslint-config": "^2.2.1",
+        "@vinicius1313/eslint-config": "^2.2.2",
         "@vinicius1313/tsconfig": "^2.0.0",
         "eslint": "^9.39.4",
         "react-native-builder-bob": "^0.40.18",

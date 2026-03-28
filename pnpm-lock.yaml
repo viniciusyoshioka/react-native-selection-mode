@@ -19,8 +19,8 @@ importers:
         specifier: ^19.2.14
         version: 19.2.14
       '@vinicius1313/eslint-config':
-        specifier: ^2.2.1
-        version: 2.2.1(@stylistic/eslint-plugin@5.10.0(eslint@9.39.4))(eslint@9.39.4)(typescript-eslint@8.57.2(eslint@9.39.4)(typescript@5.9.3))(typescript@5.9.3)
+        specifier: ^2.2.2
+        version: 2.2.2(@stylistic/eslint-plugin@5.10.0(eslint@9.39.4))(eslint@9.39.4)(typescript-eslint@8.57.2(eslint@9.39.4)(typescript@5.9.3))(typescript@5.9.3)
       '@vinicius1313/tsconfig':
         specifier: ^2.0.0
         version: 2.0.0
@@ -772,8 +772,8 @@ packages:
     resolution: {integrity: sha512-zhahknjobV2FiD6Ee9iLbS7OV9zi10rG26odsQdfBO/hjSzUQbkIYgda+iNKK1zNiW2ey+Lf8MU5btN17V3dUw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@vinicius1313/eslint-config@2.2.1':
-    resolution: {integrity: sha512-1d4sOs/imyj0949rIFFutktW5nFzUPO6QrH9uUkPUbXFO7w3vYsq003N15mNc+ntfO3U+PpZcDFePCTaw4d4KQ==}
+  '@vinicius1313/eslint-config@2.2.2':
+    resolution: {integrity: sha512-6l/Iv74E7RPZfj3G0IZNyko/vU32xvMSQDWdUHmM7j1aGN/AHyromGTe3SLcugBaRUgsQMwhxZe+dmKgfMCHCw==}
     peerDependencies:
       '@stylistic/eslint-plugin': '>= 5.5.0'
       eslint: '>= 9'
@@ -2594,7 +2594,7 @@ snapshots:
       '@typescript-eslint/types': 8.57.2
       eslint-visitor-keys: 5.0.1
 
-  '@vinicius1313/eslint-config@2.2.1(@stylistic/eslint-plugin@5.10.0(eslint@9.39.4))(eslint@9.39.4)(typescript-eslint@8.57.2(eslint@9.39.4)(typescript@5.9.3))(typescript@5.9.3)':
+  '@vinicius1313/eslint-config@2.2.2(@stylistic/eslint-plugin@5.10.0(eslint@9.39.4))(eslint@9.39.4)(typescript-eslint@8.57.2(eslint@9.39.4)(typescript@5.9.3))(typescript@5.9.3)':
     dependencies:
       eslint: 9.39.4
     optionalDependencies:
