@@ -41,13 +41,14 @@
         "react": "*"
     },
     "devDependencies": {
+        "@eslint/js": "^10.0.1",
         "@stylistic/eslint-plugin": "^5.10.0",
         "@types/react": "^19.2.14",
-        "@vinicius1313/eslint-config": "^2.2.2",
-        "@vinicius1313/tsconfig": "^2.0.0",
-        "eslint": "^9.39.4",
+        "@vinicius1313/eslint-config": "^2.3.0",
+        "@vinicius1313/tsconfig": "^3.0.1",
+        "eslint": "^10.1.0",
         "react-native-builder-bob": "^0.40.18",
-        "typescript": "^5.9.3",
+        "typescript": "^6.0.2",
         "typescript-eslint": "^8.57.2"
     },
     "react-native-builder-bob": {
