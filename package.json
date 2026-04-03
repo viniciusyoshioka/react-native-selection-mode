@@ -45,11 +45,11 @@
         "@stylistic/eslint-plugin": "^5.10.0",
         "@types/react": "^19.2.14",
         "@vinicius1313/eslint-config": "^2.3.0",
-        "@vinicius1313/tsconfig": "^3.0.1",
+        "@vinicius1313/tsconfig": "^3.0.2",
         "eslint": "^10.1.0",
-        "react-native-builder-bob": "^0.40.18",
+        "react-native-builder-bob": "^0.41.0",
         "typescript": "^6.0.2",
-        "typescript-eslint": "^8.57.2"
+        "typescript-eslint": "^8.58.0"
     },
     "react-native-builder-bob": {
         "source": "src",
